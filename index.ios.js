@@ -14,7 +14,7 @@ class HomeScreen extends React.Component {
         Hello, Navigation
         </Text>
         <Button
-          onPress={() => navigate('Chat', user: 'Ruffeng')}
+          onPress={() => navigate('Chat', {user: 'Maria'})}
           title='Chat with ruffeng' />
       </View>
       );
@@ -22,13 +22,14 @@ class HomeScreen extends React.Component {
 }
 
 class ChatScreen extends React.Component {
-    static navigationOptions = {
-      title: 'Chat with Ruffeng'
-    }
+    static navigationOptions = ({ navigation }) => ({
+      title: `Chat with ${navigation.state.params.user}`,
+    });
     render() {
+      const { params } = this.props.navigation.state;
       return (
         <View>
-          <Text> Chat with Ruffeng!</Text>
+          <Text> Chat with { params.user }</Text>
         </View>
       );
     }
@@ -36,7 +37,7 @@ class ChatScreen extends React.Component {
 
 const SimpleApp = StackNavigator({
   Home: { screen: HomeScreen },
-  Chat: { screen: ChatScreen}
+  Chat: { screen: ChatScreen }
 });
 
 AppRegistry.registerComponent('navigator', () => SimpleApp);
