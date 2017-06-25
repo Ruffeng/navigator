@@ -42,9 +42,19 @@ class RecentChatsScreen extends React.Component {
 }
 
 
-class AllContactsScreen extends React.Component{
+class AllContactsScreen extends React.Component {
   render() {
-    return <Text> List of all Contacts </Text>
+    const { navigate } = this.props.navigation;
+    return (
+      <View>
+        <Text>
+          List of all Contacts
+        </Text>
+        <Button
+        onPress={() => navigate('Chat', { user: 'Ruffeng' })}
+        title="Chat with Ruffeng" />
+      </View>
+      );
   }
 }
 const MainScreenNavigator = TabNavigator({
