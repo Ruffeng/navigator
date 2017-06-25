@@ -51,9 +51,12 @@ const MainScreenNavigator = TabNavigator({
   Recent: { screen: RecentChatsScreen },
   All: { screen: AllContactsScreen },
 });
+MainScreenNavigator.navigationOptions = {
+  title: 'My Chats'
+};
 const SimpleApp = StackNavigator({
-  Home: { screen: HomeScreen },
+  Home: { screen: MainScreenNavigator },
   Chat: { screen: ChatScreen },
 });
 
-AppRegistry.registerComponent('navigator', () => MainScreenNavigator);
+AppRegistry.registerComponent('navigator', () => SimpleApp);
